@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import AppLayout from './theme/Layout.vue'
+import router from './router'
 
 // Vue.component('app', {
 //   template: `
@@ -28,7 +29,8 @@ import AppLayout from './theme/Layout.vue'
 // })
 
 const app = new Vue({
+  router,
   ...AppLayout
 })
 
-export { app }
+export { app, router }
