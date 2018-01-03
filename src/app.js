@@ -22,9 +22,13 @@ import AppLayout from './theme/Layout.vue'
 //   },
 //   template: '<div id="app">{{ hello }}</div>'
 // })
+// const app = new Vue({
+//   // render: h => h('app') // similar template: '<app></app>'
+//   render: h => h(AppLayout)
+// })
+
 const app = new Vue({
-  // render: h => h('app') // similar template: '<app></app>'
-  render: h => h(AppLayout)
+  ...AppLayout
 })
 
 export { app }

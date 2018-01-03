@@ -31,12 +31,11 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-            scss: 'vue-style-loader!css-loader!sass-loader'
-          }
-          //
-          // css: 'css-loader',
-          // scss: 'css-loader|sass-loader'
+          // loaders: {
+          //   scss: 'vue-style-loader!css-loader!sass-loader'
+          // }
+          css: 'css-loader',
+          scss: 'css-loader|sass-loader'
         }
       },
       {
