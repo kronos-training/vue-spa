@@ -1,23 +1,29 @@
 <template lang="html">
   <div>
-    <nav class="nav has-shadow">
+    <app-header></app-header>
+    <section class="main-section section">
       <div class="container">
-        <a href="/">
-          <img src="http://bit.ly/vue-img" alt="Vue SPA" />
-        </a>
+        <category></category>
       </div>
-    </nav>
-    <section class="main-section section"></section>
+    </section>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-export default {
+import AppHeader from './AppHeader.vue'
+import AppFooter from './AppFooter.vue'
+import Category from './Category.vue'
 
+export default {
+  components: {
+    'app-header': AppHeader,
+    'app-footer': AppFooter,
+    'category': Category
+  }
 }
 </script>
 
 <style lang="scss">
   @import '~bulma';
-
 </style>

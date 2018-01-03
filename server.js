@@ -1,24 +1,23 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
+const fs = require('fs')
+const path = require('path')
+const express = require('express')
 
-const app = express();
-const port = process.env.PORT || 3001;
+const app = express()
+const port = process.env.PORT || 3001
 
 const indexHtml = (() => {
-  return fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-})();
+  return fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+})()
 
-app.use(express.static('dist'));
+app.use(express.static('dist'))
 
-require('./webpack/dev-server')(app);
+require('./webpack/dev-server')(app)
 
 app.get('*', (req, res) => {
-  res.write(indexHtml);
-  res.end();
-});
-
+  res.write(indexHtml)
+  res.end()
+})
 
 app.listen(port, () => {
-  console.info(`Running server on port ${port}`);
-});
+  console.info(`Running server on port ${port}`)
+})
