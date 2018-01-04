@@ -9,24 +9,21 @@
       <router-link to="/category/front-end" class="navbar-item is-tab">Front-end</router-link>
       <router-link :to="{ name: 'category', params: { id: 'mobile' }}" class="navbar-item is-tab">Mobile</router-link>
        <router-link to="/login" class="navbar-item is-tab">
-         Login
+         <span v-if="isAuthenticated">Logout</span>
+         <span v-else>Login</span>
        </router-link>
     </div>
   </nav>
 </template>
 <script>
-  import eventBus from '../event-bus'
+  import { mapGetters } from 'vuex'
 
   export default {
-    data () {
-      return {
-        isAuthenticated: false
-      }
-    },
-    created () {
-      eventBus.$on('authStatusUpdate', isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
-      })
+    computed: {
+      // isAuthenticated () {
+      //   return this.$store.state.isAuthenticated
+      // }
+      ...mapGetters(['isAuthenticated'])
     }
   }
 </script>
