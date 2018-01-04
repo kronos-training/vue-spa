@@ -2,10 +2,6 @@
   <div class="content">
     <div v-if="isAuthenticated">
       Hello authenticated user!
-
-      <p>Name: {{ profile.firstName }}</p>
-      <p>Favorite Sandwich: {{ profile.favoriteSandwich }}</p>
-
       <button @click="logout" class="button is-primary">Logout</button>
     </div>
     <form @submit.prevent="login" v-else>
@@ -51,59 +47,32 @@
 </template>
 
 <script>
-  import appService from '../app.service'
-  import eventBus from '../event-bus'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data () {
       return {
         username: '',
-        password: '',
-        isAuthenticated: false,
-        profile: {}
+        password: ''
       }
     },
-    watch: {
-      isAuthenticated (val) {
-        if (val) {
-          appService.getProfile()
-            .then(profile => {
-              this.profile = profile
-            })
-        } else {
-          this.profile = {}
-        }
-
-        eventBus.$emit('authStatusUpdate', val)
-      }
+    computed: {
+      ...mapGetters(['isAuthenticated'])
     },
     methods: {
+      ...mapActions({
+        logout: 'logout'
+      }),
       login () {
         // username: bill, pass: vuejs
-        appService.login({ username: this.username, password: this.password })
-          .then(data => {
-            window.localStorage.setItem('token', data.token)
-            window.localStorage.setItem('tokenExpiration', data.expiration)
-
+        this.$store.dispatch('login', { username: this.username, password: this.password })
+          .then(() => {
             this.username = ''
             this.password = ''
-            this.isAuthenticated = true
           })
           .catch(() => {
             window.alert('Could not login!')
           })
-      },
-      logout () {
-        window.localStorage.removeItem('token')
-        window.localStorage.removeItem('tokenExpiration')
-        this.isAuthenticated = false
-      }
-    },
-    created () {
-      let expiration = window.localStorage.getItem('tokenExpiration')
-      let unixTimestamp = new Date().getTime() / 1000
-      if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
-        this.isAuthenticated = true
       }
     }
   }
