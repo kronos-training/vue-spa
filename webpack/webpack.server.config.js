@@ -20,4 +20,4 @@ const config = Object.assign({}, base, {
   ]
 })
 
-export default config
+module.exports = config

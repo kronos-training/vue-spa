@@ -1,6 +1,8 @@
-import { app } from './app'
+import { app, router } from './app'
 
-app.$mount('#app')
+router.onReady(() => {
+  app.$mount('#app')
+})
 
 if (module.hot) {
   module.hot.accept()

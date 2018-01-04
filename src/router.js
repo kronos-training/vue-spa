@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Category from './theme/Category.vue'
-// import Login from './theme/Login.vue'
-// import NotFound from './theme/NotFound.vue'
+import Category from './theme/Category.vue'
+import Login from './theme/Login.vue'
+import NotFound from './theme/NotFound.vue'
 
-const Category = () => System.import('./theme/Category.vue') // eslint-disable-line
-const Login = () => System.import('./theme/Login.vue') // eslint-disable-line
-const NotFound = () => System.import('./theme/NotFound.vue') // eslint-disable-line
+// const Category = () => System.import('./theme/Category.vue') // eslint-disable-line
+// const Login = () => System.import('./theme/Login.vue') // eslint-disable-line
+// const NotFound = () => System.import('./theme/NotFound.vue') // eslint-disable-line
 
 Vue.use(VueRouter)
 

@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const MFS = require('memory-fs')
 const clientConfig = require('./webpack.client.config')
-const serverConfig = require('/webpack.server.config')
+const serverConfig = require('./webpack.server.config')
 
 module.exports = function setupDevServer (app, onUpdate) {
   clientConfig.entry.app.unshift('webpack-hot-middleware/client')
