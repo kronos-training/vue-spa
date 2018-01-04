@@ -6,8 +6,8 @@
       </router-link>
     </div>
     <div class="navbar-menu">
-      <router-link to="/category/front-end" class="navbar-item is-tab" exact>Front-end</router-link>
-      <router-link to="/category/mobile" class="navbar-item is-tab" exact>Mobile</router-link>
+      <router-link to="/category/front-end" class="navbar-item is-tab">Front-end</router-link>
+      <router-link :to="{ name: 'category', params: { id: 'mobile' }}" class="navbar-item is-tab">Mobile</router-link>
        <router-link to="/login" class="navbar-item is-tab">Login</router-link>
     </div>
   </nav>
