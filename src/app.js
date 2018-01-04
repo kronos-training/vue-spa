@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import AppLayout from './theme/Layout.vue'
 import router from './router'
+import store from './vuex'
 
 // Vue.component('app', {
 //   template: `
@@ -30,7 +31,8 @@ import router from './router'
 
 const app = new Vue({
   router,
-  ...AppLayout
+  ...AppLayout,
+  store
 })
 
-export { app, router }
+export { app, router, store }
