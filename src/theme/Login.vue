@@ -6,9 +6,9 @@
       <p>Name: {{ profile.firstName }}</p>
       <p>Favorite Sandwich: {{ profile.favoriteSandwich }}</p>
 
-      <button @click="logout()" class="button is-primary">Logout</button>
+      <button @click="logout" class="button is-primary">Logout</button>
     </div>
-    <div v-else>
+    <form @submit.prevent="login" v-else>
       <h2>Login</h2>
     	<div class="field is-horizontal">
     		<div class="field-label is-normal">
@@ -40,15 +40,13 @@
     		</div>
     		<div class="field-body">
     		  <div class="field">
-    			<div class="control">
-    			  <button class="button is-primary" v-on:click="login">
-    				Login
-    			  </button>
-    			</div>
+      			<div class="control">
+      			  <button class="button is-primary" type="submit">Login</button>
+      			</div>
     		  </div>
     		</div>
     	</div>
-    </div>
+    </form>
   </div>
 </template>
 
